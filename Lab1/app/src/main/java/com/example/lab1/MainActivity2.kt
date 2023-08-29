@@ -10,12 +10,10 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val string = intent.getStringExtra("string")
+        val ss:String = intent.getStringExtra("string_to_show_ac2").toString()
 
         val textView: TextView = findViewById(R.id.textView)
         Log.d("TEST", textView.toString());
-        textView.text = string
-
-
+        textView.text = ss
     }
 }

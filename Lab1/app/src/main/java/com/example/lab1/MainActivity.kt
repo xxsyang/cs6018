@@ -1,10 +1,12 @@
 package com.example.lab1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
 import android.view.View
-import android.content.Intent
+import android.widget.Button
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,14 +18,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.button3).setOnClickListener(this)
         findViewById<Button>(R.id.button4).setOnClickListener(this)
         findViewById<Button>(R.id.button5).setOnClickListener(this)
+
+
     }
 
     override fun onClick(v: View?) {
         val bt = v as Button
         val string = bt.text.toString()
         val intent = Intent(this, MainActivity2::class.java)
-        intent.putExtra("string", string)
-
+        intent.putExtra("string_to_show_ac2", string)
         startActivity(intent)
     }
+
 }
+
