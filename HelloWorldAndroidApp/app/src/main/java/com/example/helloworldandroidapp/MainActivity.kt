@@ -1,6 +1,7 @@
 package com.example.helloworldandroidapp
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.button).setOnClickListener(){
             findViewById<TextView>(R.id.text1).text = "GitHub: xxsyang"
+
+            val textV = findViewById<TextView>(R.id.text1)
+
+            textV.setTextColor(Color.parseColor( "#FF0000"))
+
         }
     }
 
