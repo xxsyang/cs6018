@@ -15,6 +15,7 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private var bitmapCanvas = Canvas(bitmap)
     private val paint = Paint()
     private val rect: Rect by lazy { Rect(0, 0, width, height) }
+    private var radius = 10f
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -30,11 +31,11 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), 10f, paint)
+                bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
             }
 
             MotionEvent.ACTION_MOVE -> {
-                bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), 10f, paint)
+                bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
             }
         }
         invalidate()
@@ -50,8 +51,8 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         paint.color = color
     }
 
-    fun setSize(size: Float) {
-        paint.strokeWidth = size
+    fun setSize(size: Int) {
+        radius += size
     }
 }
 

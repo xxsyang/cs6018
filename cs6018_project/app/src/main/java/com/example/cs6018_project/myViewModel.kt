@@ -13,6 +13,7 @@ class myViewModel : ViewModel()  {
 
     private val _bitmap: MutableLiveData<Bitmap> = MutableLiveData(Bitmap.createBitmap(1440, 2990, Bitmap.Config.ARGB_8888))
     private val _color : MutableLiveData<Color> = MutableLiveData(Color.valueOf(1f, 1f, 0f))
+    var size:MutableLiveData<Int> = MutableLiveData<Int>()
 
     val bitmap = _bitmap as LiveData<Bitmap>
     val color  = _color as LiveData<Color>
