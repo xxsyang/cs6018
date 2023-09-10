@@ -9,6 +9,13 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 
+/**
+ * Available shapes in Canvas.java:
+ * drawCircle (✅)
+ * drawRect (✅)
+ * drawOval (decided not to do)
+ * drawLines (4 points -> shape)
+ */
 class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     private var bitmap = Bitmap.createBitmap(1440, 20, Bitmap.Config.ARGB_8888)
@@ -16,6 +23,9 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint = Paint()
     private val rect: Rect by lazy { Rect(0, 0, width, height) }
     private var radius = 10f
+    private var square_length = 20 // for size of square pen shape
+
+    private var shape_of_pen = 1 // 1 (default): circle, 2: square
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -29,13 +39,29 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         val x = event!!.x.toInt()
         val y = event.y.toInt()
 
+        // square pen shape
+        val square_pen: Rect by lazy { Rect(x, y, x + square_length, y + square_length) }
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
+                when (shape_of_pen) {
+                    1 -> { // 1: circle
+                        bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
+                    }
+                    2 -> { // 2: circle
+                        bitmapCanvas.drawRect(square_pen, paint)
+                    }
+                }
             }
-
             MotionEvent.ACTION_MOVE -> {
-                bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
+                when (shape_of_pen) {
+                    1 -> { // 1: circle
+                        bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
+                    }
+                    2 -> { // 2: circle
+                        bitmapCanvas.drawRect(square_pen, paint)
+                    }
+                }
             }
         }
         invalidate()
@@ -53,6 +79,11 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     fun setSize(size: Int) {
         radius += size
+    }
+
+    // set pen shape (1: circle, 2: square)
+    fun setShape(size: Int) {
+        shape_of_pen = size
     }
 }
 
