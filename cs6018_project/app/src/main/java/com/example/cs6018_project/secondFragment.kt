@@ -39,6 +39,19 @@ class secondFragment : Fragment() {
             binding.customView.setSize(it)
         }
 
+
+        binding.buttonCircle.setOnClickListener {
+            binding.customView.setShape(1)
+            binding.buttonCircle.text = "◯ (current)"
+            binding.buttonSquare.text = "□"
+        }
+
+        binding.buttonSquare.setOnClickListener {
+            binding.customView.setShape(2)
+            binding.buttonCircle.text = "◯"
+            binding.buttonSquare.text = "□ (current)"
+        }
+
         viewModel.bitmap.observe(viewLifecycleOwner) {
             binding.customView.setBitMap(it)
         }
