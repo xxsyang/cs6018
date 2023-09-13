@@ -40,6 +40,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -56,4 +58,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     //Fragment stuff
     implementation("androidx.fragment:fragment-ktx:1.6.1")
+
+    //color picker
+    implementation("com.github.yukuku:ambilwarna:2.0.1")
+
+
 }

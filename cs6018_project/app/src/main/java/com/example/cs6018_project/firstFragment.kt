@@ -24,7 +24,7 @@ class firstFragment : Fragment() {
         val viewModel : myViewModel by activityViewModels()
 
         binding.bt1.setOnClickListener {
-            viewModel.pickColor()
+
             buttonFunction()
         }
 
