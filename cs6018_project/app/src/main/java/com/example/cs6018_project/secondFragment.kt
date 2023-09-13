@@ -63,6 +63,26 @@ class secondFragment : Fragment() {
             binding.customView.setColor(Color.RED)
         }
 
+        binding.buttonBlackColor.setOnClickListener {
+            binding.customView.setColor(Color.BLACK)
+        }
+
+        binding.buttonGreenColor.setOnClickListener {
+            binding.customView.setColor(Color.GREEN)
+        }
+
+        binding.buttonYellowColor.setOnClickListener {
+            binding.customView.setColor(Color.YELLOW)
+        }
+
+        binding.buttonCyanColor.setOnClickListener {
+            binding.customView.setColor(Color.CYAN)
+        }
+
+        binding.buttonGaryColor.setOnClickListener {
+            binding.customView.setColor(Color.GRAY)
+        }
+
         viewModel.bitmap.observe(viewLifecycleOwner) {
             binding.customView.setBitMap(it)
         }
