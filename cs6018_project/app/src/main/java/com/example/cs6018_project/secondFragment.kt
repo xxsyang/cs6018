@@ -41,7 +41,6 @@ class secondFragment : Fragment() {
             binding.customView.setSize(it)
         }
 
-
         binding.buttonCircle.setOnClickListener {
             binding.customView.setShape(1)
             binding.buttonCircle.text = "◯ (current)"
@@ -55,7 +54,6 @@ class secondFragment : Fragment() {
         }
 
         binding.buttonBlueColor.setOnClickListener {
-            Log.d("TAG", "onCreateView: blue")
             binding.customView.setColor(Color.BLUE)
         }
 
@@ -82,7 +80,7 @@ class secondFragment : Fragment() {
         binding.buttonGaryColor.setOnClickListener {
             binding.customView.setColor(Color.GRAY)
         }
-
+        
         viewModel.bitmap.observe(viewLifecycleOwner) {
             binding.customView.setBitMap(it)
         }

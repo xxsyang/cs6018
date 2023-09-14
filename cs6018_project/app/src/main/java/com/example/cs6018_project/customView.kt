@@ -48,20 +48,17 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
                     1 -> { // 1: circle
                         bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
                     }
-
-                    2 -> { // 2: circle
+                    2 -> { // 2: square
                         bitmapCanvas.drawRect(square_pen, paint)
                     }
                 }
             }
-
             MotionEvent.ACTION_MOVE -> {
                 when (shape_of_pen) {
                     1 -> { // 1: circle
                         bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
                     }
-
-                    2 -> { // 2: circle
+                    2 -> { // 2: square
                         bitmapCanvas.drawRect(square_pen, paint)
                     }
                 }
@@ -88,7 +85,6 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     fun setShape(size: Int) {
         shape_of_pen = size
     }
-
 }
 
 
