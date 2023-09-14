@@ -78,7 +78,8 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     fun setSize(size: Int) {
-        radius += size
+        radius = size.toFloat()
+        square_length = size
     }
 
     // set pen shape (1: circle, 2: square)
