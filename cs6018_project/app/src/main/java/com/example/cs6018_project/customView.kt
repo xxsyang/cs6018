@@ -48,7 +48,7 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
                     1 -> { // 1: circle
                         bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
                     }
-                    2 -> { // 2: circle
+                    2 -> { // 2: square
                         bitmapCanvas.drawRect(square_pen, paint)
                     }
                 }
@@ -58,7 +58,7 @@ class customView(context: Context, attrs: AttributeSet) : View(context, attrs) {
                     1 -> { // 1: circle
                         bitmapCanvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
                     }
-                    2 -> { // 2: circle
+                    2 -> { // 2: square
                         bitmapCanvas.drawRect(square_pen, paint)
                     }
                 }

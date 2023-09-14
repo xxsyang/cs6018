@@ -1,10 +1,12 @@
 package com.example.cs6018_project
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.cs6018_project.databinding.FragmentSecondBinding
@@ -39,7 +41,6 @@ class secondFragment : Fragment() {
             binding.customView.setSize(it)
         }
 
-
         binding.buttonCircle.setOnClickListener {
             binding.customView.setShape(1)
             binding.buttonCircle.text = "◯ (current)"
@@ -52,6 +53,34 @@ class secondFragment : Fragment() {
             binding.buttonSquare.text = "□ (current)"
         }
 
+        binding.buttonBlueColor.setOnClickListener {
+            binding.customView.setColor(Color.BLUE)
+        }
+
+        binding.buttonRedColor.setOnClickListener {
+            binding.customView.setColor(Color.RED)
+        }
+
+        binding.buttonBlackColor.setOnClickListener {
+            binding.customView.setColor(Color.BLACK)
+        }
+
+        binding.buttonGreenColor.setOnClickListener {
+            binding.customView.setColor(Color.GREEN)
+        }
+
+        binding.buttonYellowColor.setOnClickListener {
+            binding.customView.setColor(Color.YELLOW)
+        }
+
+        binding.buttonCyanColor.setOnClickListener {
+            binding.customView.setColor(Color.CYAN)
+        }
+
+        binding.buttonGaryColor.setOnClickListener {
+            binding.customView.setColor(Color.GRAY)
+        }
+        
         viewModel.bitmap.observe(viewLifecycleOwner) {
             binding.customView.setBitMap(it)
         }
