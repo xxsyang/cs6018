@@ -1,4 +1,4 @@
-package com.example.cs6018_project
+package com.example.cs6018_project.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.cs6018_project.databinding.FragmentFirstBinding
+import com.example.cs6018_project.BoardViewModel
 
-class firstFragment : Fragment() {
+class FirstFragment : Fragment() {
     private var buttonFunction : () -> Unit = {}
 
     fun setButtonFunction(newFunc: () -> Unit) {
@@ -19,10 +20,7 @@ class firstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         val binding = FragmentFirstBinding.inflate(inflater, container, false)
-        val viewModel : myViewModel by activityViewModels()
-
         binding.bt1.setOnClickListener {
 
             buttonFunction()

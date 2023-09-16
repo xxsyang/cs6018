@@ -1,112 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".secondFragment">
+<layout>
 
+    <data>
+        <variable
+                name="viewModel"
+                type="com.example.cs6018_project.BoardViewModel" />
+    </data>
 
-    <com.example.cs6018_project.customView
-        android:id="@+id/customView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            tools:context=".fragment.SecondFragment">
 
-    <SeekBar
-        android:id="@+id/seekbar_Discrete"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:max="40"
-        android:progress="5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        <com.example.cs6018_project.BoardView
+                android:id="@+id/boardView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/button_circle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:text="◯ (current)" />
+        <SeekBar
+                android:id="@+id/seekbar_Discrete"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:max="40"
+                android:progress="5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.333" />
 
-    <Button
-        android:id="@+id/button_square"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:text="□" />
-  
-    <!--Pick color Button-->
-    <Button
-        android:id="@+id/button_red_color"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="316dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#FF0000" />
+        <Button
+                android:id="@+id/button_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:text="◯ (current)" />
 
+        <Button
+                android:id="@+id/button_square"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:text="□" />
 
-    <Button
-        android:id="@+id/button_blue_color"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#0000FF" />
+        <!--Pick color Button-->
+        <Button
+                android:id="@+id/button_red_color"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="316dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="#FF0000" />
 
-    <Button
-        android:id="@+id/button_green_color"
-        android:layout_width="40dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#008000" />
+        <Button
+                android:id="@+id/button_blue_color"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="#0000FF" />
 
-    <Button
-        android:id="@+id/button_yellow_color"
-        android:layout_width="40dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFF00" />
+        <Button
+                android:id="@+id/button_green_color"
+                android:layout_width="40dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#008000" />
 
-    <Button
-        android:id="@+id/button_cyan_color"
-        android:layout_width="40dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="32dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#00FFFF" />
+        <Button
+                android:id="@+id/button_yellow_color"
+                android:layout_width="40dp"
+                android:layout_marginStart="128dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFF00" />
 
-    <Button
-        android:id="@+id/button_gary_color"
-        android:layout_width="40dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="32dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#808080" />
+        <Button
+                android:id="@+id/button_cyan_color"
+                android:layout_width="40dp"
+                android:layout_marginStart="176dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginEnd="32dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00FFFF" />
 
-    <Button
-        android:id="@+id/button_black_color"
-        android:layout_width="40dp"
-        android:layout_marginStart="268dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="32dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#000000" />
+        <Button
+                android:id="@+id/button_gary_color"
+                android:layout_width="40dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginEnd="32dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#808080" />
 
-</FrameLayout>
+        <Button
+                android:id="@+id/button_black_color"
+                android:layout_width="40dp"
+                android:layout_marginStart="268dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginEnd="32dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#000000" />
+
+    </FrameLayout>
+</layout>
