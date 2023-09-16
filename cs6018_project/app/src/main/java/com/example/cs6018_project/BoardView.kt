@@ -14,7 +14,7 @@ import android.view.View
 
 class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private var bitmap = Bitmap.createBitmap(1440, 2160, Bitmap.Config.ARGB_8888)
+    private var bitmap = Bitmap.createBitmap(2160, 3840, Bitmap.Config.ARGB_8888)
 
     init {
         setWillNotDraw(false)
