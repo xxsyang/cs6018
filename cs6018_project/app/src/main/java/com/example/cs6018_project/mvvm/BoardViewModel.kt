@@ -1,4 +1,4 @@
-package com.example.cs6018_project
+package com.example.cs6018_project.mvvm
 
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -83,5 +83,4 @@ class BoardViewModel : ViewModel()  {
             }
         }
     }
-
 }

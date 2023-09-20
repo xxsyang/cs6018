@@ -1,4 +1,4 @@
-package com.example.cs6018_project
+package com.example.cs6018_project.mvvm
 
 import android.graphics.Bitmap
 

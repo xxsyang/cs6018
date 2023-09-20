@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.cs6018_project.R
 import com.example.cs6018_project.databinding.FragmentSecondBinding
-import com.example.cs6018_project.BoardViewModel
+import com.example.cs6018_project.mvvm.BoardViewModel
 
 
 class SecondFragment : Fragment() {

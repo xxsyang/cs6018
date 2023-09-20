@@ -1,4 +1,4 @@
-package com.example.cs6018_project
+package com.example.cs6018_project.mvvm
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -14,7 +14,7 @@ import android.view.View
 
 class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private var bitmap = Bitmap.createBitmap(2160, 3840, Bitmap.Config.ARGB_8888)
+    private var bitmap = Bitmap.createBitmap(2160, 3180, Bitmap.Config.ARGB_8888)
 
     init {
         setWillNotDraw(false)
