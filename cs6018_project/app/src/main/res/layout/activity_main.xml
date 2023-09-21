@@ -10,5 +10,7 @@
         android:id="@+id/fragmentContainerView"
         android:name="com.example.cs6018_project.fragment.FirstFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 </FrameLayout>
