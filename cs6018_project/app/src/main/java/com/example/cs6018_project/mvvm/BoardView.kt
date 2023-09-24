@@ -1,4 +1,4 @@
-package com.example.cs6018_project
+package com.example.cs6018_project.mvvm
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -41,9 +41,9 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         val x = event!!.x.toInt()
         val y = event.y.toInt()
 
-        if(onTouchListener != null) {
-            onTouchListener(x, y, event.action)
-        }
+        //if(onTouchListener != null) {
+        onTouchListener(x, y, event.action)
+        //}
 
         invalidate()
 
@@ -58,5 +58,3 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
 
 }
-
-

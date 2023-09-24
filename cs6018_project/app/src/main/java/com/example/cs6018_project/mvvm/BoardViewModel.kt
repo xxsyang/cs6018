@@ -1,5 +1,6 @@
-package com.example.cs6018_project
+package com.example.cs6018_project.mvvm
 
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
@@ -26,6 +27,10 @@ class BoardViewModel : ViewModel()  {
         _boardData.value = board
         canvas = Canvas(_boardData.value!!.bitmap)
         Log.wtf("*", "refreshBoardData() executed")
+    }
+
+    fun getCurrentBitmap(): Bitmap {
+        return _boardData.value!!.bitmap
     }
 
     fun setColor(color: Int) {
