@@ -4,7 +4,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
         app:startDestination="@id/firstFragment">
-
     <fragment
             android:id="@+id/firstFragment"
             android:name="com.example.cs6018_project.fragment.FirstFragment"
@@ -13,8 +12,10 @@
         <action
                 android:id="@+id/action_firstFragment_to_savedBoardFragment"
                 app:destination="@id/savedBoardFragment" />
+        <action
+                android:id="@+id/action_firstFragment_to_splashFragment"
+                app:destination="@id/splashFragment" />
     </fragment>
-
     <fragment
             android:id="@+id/secondFragment"
             android:name="com.example.cs6018_project.fragment.SecondFragment"
@@ -27,5 +28,14 @@
         <action
                 android:id="@+id/action_savedBoardFragment_to_secondFragment"
                 app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/splashFragment"
+            android:name="com.example.cs6018_project.fragment.SplashFragment"
+            android:label="fragment_splash"
+            tools:layout="@layout/fragment_splash" >
+        <action
+                android:id="@+id/action_splashFragment_to_firstFragment"
+                app:destination="@id/firstFragment" />
     </fragment>
 </navigation>

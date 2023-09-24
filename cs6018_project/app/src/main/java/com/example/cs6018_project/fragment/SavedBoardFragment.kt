@@ -36,8 +36,6 @@ import java.io.IOException
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import androidx.compose.material.Divider
-import androidx.compose.ui.graphics.Color
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -99,8 +97,6 @@ class SavedBoardFragment : Fragment() {
         LazyColumn {
             items(fileNames) {
                     fileName ->
-                Divider(color = Color.Black, thickness = 2.dp)
-                Log.wtf("*", "Text: $fileName")
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -113,7 +109,7 @@ class SavedBoardFragment : Fragment() {
                             onClick = { jumpToBoard(fileName) }
                         )
                 ) {
-                    Text(text = fileName, modifier = Modifier.padding(16.dp), fontSize = 16.sp, color = Color.Black)
+                    Text(text = fileName, modifier = Modifier.padding(16.dp), fontSize = 16.sp)
                 }
             }
         }

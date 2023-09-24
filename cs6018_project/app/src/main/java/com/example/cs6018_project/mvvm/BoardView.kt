@@ -14,7 +14,7 @@ import android.view.View
 
 class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private var bitmap = Bitmap.createBitmap(2160, 3180, Bitmap.Config.ARGB_8888)
+    private var bitmap = Bitmap.createBitmap(2160, 3840, Bitmap.Config.ARGB_8888)
 
     init {
         setWillNotDraw(false)
@@ -41,9 +41,9 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         val x = event!!.x.toInt()
         val y = event.y.toInt()
 
-        if(onTouchListener != null) {
-            onTouchListener(x, y, event.action)
-        }
+        //if(onTouchListener != null) {
+        onTouchListener(x, y, event.action)
+        //}
 
         invalidate()
 
@@ -58,5 +58,3 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
 
 }
-
-

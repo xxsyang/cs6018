@@ -1,5 +1,7 @@
 package com.example.cs6018_project.fragment
 
+import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -7,14 +9,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.cs6018_project.DynamicConfig
 import com.example.cs6018_project.R
 import com.example.cs6018_project.databinding.FragmentSecondBinding
+import com.example.cs6018_project.mvvm.BoardRepository
 import com.example.cs6018_project.mvvm.BoardViewModel
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 
 class SecondFragment : Fragment() {
+
+    lateinit var viewModel : BoardViewModel
 
     override fun onCreateView(
 
@@ -24,8 +35,9 @@ class SecondFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val binding = FragmentSecondBinding.inflate(inflater)
-        val viewModel : BoardViewModel by activityViewModels()
+        val viewModelFromActivityViewModels : BoardViewModel by activityViewModels()
 
+        viewModel = viewModelFromActivityViewModels
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -95,4 +107,33 @@ class SecondFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback = object :
+            OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Log.wtf("*", "override fun handleOnBackPressed()")
+                Log.wtf("*", "Path: " + DynamicConfig.savedBoardDirectory + File.separator + DynamicConfig.currentEditBoard)
+
+                try {
+                    // save image
+                    ByteArrayOutputStream().use {
+                        viewModel.getCurrentBitmap().compress(Bitmap.CompressFormat.PNG, 95, it)
+                        var dao = DynamicConfig.database.itemDao()
+                        var item = dao.findByName(DynamicConfig.currentEditBoard)
+                        item.image = it.toByteArray()
+                        dao.updateImage(item)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+
+                remove()
+                activity?.onBackPressed()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
 }
