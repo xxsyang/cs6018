@@ -40,21 +40,12 @@ object BoardRepository {
     }
 
     fun getBoardData(): Board {
-        if(!this::board.isInitialized) {
-            return if(currentBoardName == DynamicConfig.currentEditBoard) {
-                board
-            } else {
-                board = reloadBoard()
-                currentBoardName = DynamicConfig.currentEditBoard
-                board
-            }
-        }
-        else {
+        if (!this::board.isInitialized || currentBoardName != DynamicConfig.currentEditBoard) {
             board = reloadBoard()
             currentBoardName = DynamicConfig.currentEditBoard
-            return board
         }
-
+        return board
     }
+
 
 }
