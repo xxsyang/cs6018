@@ -66,13 +66,13 @@ class SecondFragment : Fragment() {
         })
 
         binding.buttonCircle.setOnClickListener {
-            binding.viewModel?.setShape(1)
+            binding.viewModel?.setShape(PenShape.circle)
             binding.buttonCircle.text = getString(R.string.brush_round)
             binding.buttonSquare.text = "□"
         }
 
         binding.buttonSquare.setOnClickListener {
-            binding.viewModel?.setShape(2)
+            binding.viewModel?.setShape(PenShape.square)
             binding.buttonCircle.text = "◯"
             binding.buttonSquare.text = getString(R.string.brush_square)
         }
@@ -136,4 +136,10 @@ class SecondFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
+    class PenShape {
+        companion object {
+            const val circle: Int = 1
+            const val square: Int = 2
+        }
+    }
 }
