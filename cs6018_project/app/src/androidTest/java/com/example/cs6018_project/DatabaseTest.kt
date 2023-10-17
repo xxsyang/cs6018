@@ -42,7 +42,7 @@ class DatabaseTest {
     }
 
     @Test
-    fun testAddAll() {
+    fun testInsertAll() {
         runBlocking {
             val newDrawing = Item(name="Drawing1", image = ByteArray(10))
             val lifecycleOwner = TestLifecycleOwner()
