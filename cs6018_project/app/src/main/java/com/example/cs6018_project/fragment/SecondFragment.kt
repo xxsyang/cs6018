@@ -65,6 +65,18 @@ class SecondFragment : Fragment() {
 
         })
 
+        fun setColor(color: Int) {
+            binding.viewModel?.setColor(color)
+        }
+
+        binding.buttonBlueColor.setOnClickListener { setColor(Color.BLUE) }
+        binding.buttonRedColor.setOnClickListener { setColor(Color.RED) }
+        binding.buttonBlackColor.setOnClickListener { setColor(Color.BLACK) }
+        binding.buttonGreenColor.setOnClickListener { setColor(Color.GREEN) }
+        binding.buttonYellowColor.setOnClickListener { setColor(Color.YELLOW) }
+        binding.buttonCyanColor.setOnClickListener { setColor(Color.CYAN) }
+        binding.buttonGaryColor.setOnClickListener { setColor(Color.GRAY) }
+
         binding.buttonCircle.setOnClickListener {
             binding.viewModel?.setShape(PenShape.circle)
             binding.buttonCircle.text = getString(R.string.brush_round)
@@ -75,34 +87,6 @@ class SecondFragment : Fragment() {
             binding.viewModel?.setShape(PenShape.square)
             binding.buttonCircle.text = "◯"
             binding.buttonSquare.text = getString(R.string.brush_square)
-        }
-
-        binding.buttonBlueColor.setOnClickListener {
-            binding.viewModel?.setColor(Color.BLUE)
-        }
-
-        binding.buttonRedColor.setOnClickListener {
-            binding.viewModel?.setColor(Color.RED)
-        }
-
-        binding.buttonBlackColor.setOnClickListener {
-            binding.viewModel?.setColor(Color.BLACK)
-        }
-
-        binding.buttonGreenColor.setOnClickListener {
-            binding.viewModel?.setColor(Color.GREEN)
-        }
-
-        binding.buttonYellowColor.setOnClickListener {
-            binding.viewModel?.setColor(Color.YELLOW)
-        }
-
-        binding.buttonCyanColor.setOnClickListener {
-            binding.viewModel?.setColor(Color.CYAN)
-        }
-
-        binding.buttonGaryColor.setOnClickListener {
-            binding.viewModel?.setColor(Color.GRAY)
         }
 
         return binding.root
