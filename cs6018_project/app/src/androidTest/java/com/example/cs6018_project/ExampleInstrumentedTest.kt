@@ -27,34 +27,4 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.example.cs6018_project", appContext.packageName)
     }
-//
-//    @Test
-//    fun testClick() {
-//        onView(withId(R.id.bt1)).perform(click())
-//    }
-//
-//    @Test
-//    fun testClick2() {
-//        onView(withId(R.id.bt1)).perform(click())
-//        onView(withId(R.id.button_circle)).perform(click())
-//        onView(withId(R.id.button_square)).perform(click())
-//    }
-//
-//    @Test
-//    fun testFragmentView() {
-//        onView(withId(R.id.fragmentContainerView)).check(matches(isDisplayed()))
-//    }
-//
-//    @Test
-//    fun testSwithView() {
-//        onView(withId(R.id.bt1)).perform(click())
-//        onView(withId(R.id.customView)).check(matches(isDisplayed()))
-//    }
-//
-//    @Test
-//    fun testBack() {
-//        onView(withId(R.id.bt1)).perform(click())
-//        pressBack()
-//        onView(withId(R.id.fragmentContainerView)).check(matches(isDisplayed()))
-//    }
 }
