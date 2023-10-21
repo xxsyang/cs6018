@@ -31,6 +31,11 @@ class FirstFragment : Fragment() {
             navController.navigate(R.id.action_firstFragment_to_savedBoardFragment)
         }
 
+        binding.bt2.setOnClickListener {
+
+            navController.navigate(R.id.action_firstFragment_to_shareBoardFragment)
+        }
+
         if(!DynamicConfig.flagSplashShowed) {
             navController.navigate(R.id.action_firstFragment_to_splashFragment)
         }
