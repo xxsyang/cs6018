@@ -39,6 +39,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.channelFlow
 
 fun <T> MutableLiveData<T>.trigger() {
@@ -52,10 +53,11 @@ class BoardViewModel : ViewModel()  {
     var _boardData = MutableLiveData<Board>()
     val boardData: LiveData<Board> = _boardData
 
-//    lateinit var gravityFlow : Flow<FloatArray>
-//    var gravityFlow = MutableLiveData<FloatArray>()
-//
-
+    //for tracking the x and y coordinates: data from sensor
+    var myListx = MutableLiveData<Float>()
+    val _x:LiveData<Float> = myListx
+    var myListy = MutableLiveData<Float>()
+    val _y:LiveData<Float> = myListy
 
 
 
@@ -128,41 +130,44 @@ class BoardViewModel : ViewModel()  {
     }
 
 
-    fun onClick(x: Float,y: Float,eventType: Int){
-
-        var yCoordinate =y
-        var xCoordinate =x
-        if (x>0){
-            xCoordinate+=5
-
-        }
-        if (x < 0){
-            xCoordinate-=5
-        }
-
-        if (y>0){
-            yCoordinate+=5
-
-        }
-        if (y < 0){
-            yCoordinate-=5
-        }
-        if(yCoordinate < 0){
-            yCoordinate = 0f
-
-        }
-
-        if(xCoordinate <0){
-            xCoordinate = 0f
-
-        }
-
-        onTouch(xCoordinate as Int,yCoordinate as Int,eventType)
-
-    }
-
-
-
+//    fun sensorDraw(){
+//        val paint = Paint()
+//        paint.color = _boardData.value!!.color;
+//        var xCoordinate:Float = _x.value!!
+//        var yCoordinate:Float = _y.value!!
+//        val ret =onClick(xCoordinate,yCoordinate)
+//        canvas.drawCircle(ret[0], ret[1], boardData.value!!.radius, paint)
+//    }
+//
+//    fun onClick(x: Float,y: Float):List<Float>{
+//        var yCoordinate =y
+//        var xCoordinate =x
+//        if (x>0){
+//            xCoordinate+=20
+//
+//        }
+//        if (x < 0){
+//            xCoordinate-=5
+//        }
+//
+//        if (y>0){
+//            yCoordinate+=20
+//
+//        }
+//        if (y < 0){
+//            yCoordinate-=5
+//        }
+//        if(yCoordinate < 0){
+//            yCoordinate = 0f
+//
+//        }
+//
+//        if(xCoordinate <0){
+//            xCoordinate = 0f
+//
+//        }
+//        return listOf(xCoordinate,yCoordinate)
+//    }
 
 
 }

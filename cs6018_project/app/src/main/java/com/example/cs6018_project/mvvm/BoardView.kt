@@ -92,17 +92,6 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
 
 
-//
-//    private lateinit var onClickListener: (Int, Int, Int) -> Unit
-//
-//    fun setClickListener(clickListener: (Int, Int, Int) -> Unit) {
-//        onClickListener = clickListener
-//    }
-
-
-
-
-
 
         //initialize sensor and sensor manager
     fun initSensor(){
@@ -139,8 +128,5 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
             }
         }
     }
-
-
-
-
+    
 }

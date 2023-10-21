@@ -94,16 +94,13 @@ class SecondFragment : Fragment() {
 
         })
 
-
             //added this
         binding.buttonSensor.setOnClickListener {
             binding.boardView.initSensor()
             binding.boardView.getGravityData().asLiveData().observe(viewLifecycleOwner){
                 Log.e("DataSensor", it[0].toString()+" " +it[1].toString()+" "+ it[2].toString()+" "+"gravity data in sensor")
-
-               //trying to draw here not working
-                // binding.viewModel.onClick(it[0],it[1],)
-               // binding.boardView.setClickListener { _, _, t -> viewModel.onClick(it[0],  it[1], t) }
+                binding.viewModel?.myListx?.value=(it[0])
+                binding.viewModel?.myListy?.value =(it[1])
             }
 
             binding.buttonSensor.text = "SensorArt"
