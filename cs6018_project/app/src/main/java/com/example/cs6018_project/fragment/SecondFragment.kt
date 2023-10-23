@@ -1,7 +1,9 @@
 package com.example.cs6018_project.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Bitmap.CompressFormat
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -10,13 +12,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.cs6018_project.DynamicConfig
 import com.example.cs6018_project.R
 import com.example.cs6018_project.databinding.FragmentSecondBinding
-import com.example.cs6018_project.mvvm.BoardRepository
 import com.example.cs6018_project.mvvm.BoardViewModel
+import kotlinx.coroutines.CoroutineScope
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -87,6 +90,24 @@ class SecondFragment : Fragment() {
             binding.viewModel?.setShape(PenShape.square)
             binding.buttonCircle.text = "◯"
             binding.buttonSquare.text = getString(R.string.brush_square)
+        }
+
+        binding.buttonShare.setOnClickListener {
+            val file = File(requireContext().cacheDir, "test" + ".png")
+            val fOut = FileOutputStream(file)
+            val bitmap = viewModel.getCurrentBitmap()
+            Log.wtf("*", bitmap.toString())
+            bitmap.compress(CompressFormat.PNG, 95, fOut)
+            fOut.flush()
+            fOut.close()
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(requireContext(),
+                (context?.packageName?: "") + ".provider", file))
+            intent.type = "image/*"
+            startActivity(intent)
         }
 
         return binding.root
