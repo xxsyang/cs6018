@@ -19,6 +19,7 @@ import com.example.cs6018_project.DynamicConfig
 import com.example.cs6018_project.R
 import com.example.cs6018_project.databinding.FragmentSecondBinding
 import com.example.cs6018_project.mvvm.BoardViewModel
+import kotlinx.coroutines.CoroutineScope
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -94,8 +95,9 @@ class SecondFragment : Fragment() {
         binding.buttonShare.setOnClickListener {
             val file = File(requireContext().cacheDir, "test" + ".png")
             val fOut = FileOutputStream(file)
-            val bitmap = Bitmap.createBitmap(2160, 3840, Bitmap.Config.ARGB_8888)
-            bitmap.compress(CompressFormat.PNG, 100, fOut)
+            val bitmap = viewModel.getCurrentBitmap()
+            Log.wtf("*", bitmap.toString())
+            bitmap.compress(CompressFormat.PNG, 95, fOut)
             fOut.flush()
             fOut.close()
 
@@ -104,7 +106,7 @@ class SecondFragment : Fragment() {
 
             intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(requireContext(),
                 (context?.packageName?: "") + ".provider", file))
-            intent.type = "image/png"
+            intent.type = "image/*"
             startActivity(intent)
         }
 
