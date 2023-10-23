@@ -13,9 +13,6 @@
                 android:id="@+id/action_firstFragment_to_savedBoardFragment"
                 app:destination="@id/savedBoardFragment" />
         <action
-            android:id="@+id/action_firstFragment_to_shareBoardFragment"
-            app:destination="@id/shareBoardFragment" />
-        <action
                 android:id="@+id/action_firstFragment_to_splashFragment"
                 app:destination="@id/splashFragment" />
     </fragment>
@@ -31,12 +28,6 @@
         <action
                 android:id="@+id/action_savedBoardFragment_to_secondFragment"
                 app:destination="@id/secondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/shareBoardFragment"
-        android:name="com.example.cs6018_project.fragment.ShareBoardFragment"
-        android:label="fragment_share_board"
-        tools:layout="@layout/fragment_share_board" >
     </fragment>
     <fragment
             android:id="@+id/splashFragment"
