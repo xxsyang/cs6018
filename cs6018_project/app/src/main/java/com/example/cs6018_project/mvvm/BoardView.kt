@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
@@ -43,9 +44,10 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
 
     private var bitmap = Bitmap.createBitmap(2160, 3840, Bitmap.Config.ARGB_8888)
-    lateinit var sensorManager: SensorManager
-    lateinit var gravity:Sensor
-   // lateinit var gravityFlow : Flow<FloatArray>
+    private lateinit var sensorManager: SensorManager
+    private lateinit var gravity:Sensor
+
+
 
 
     init {
@@ -128,5 +130,5 @@ class BoardView(context: Context, attrs: AttributeSet) : View(context, attrs) {
             }
         }
     }
-    
+
 }

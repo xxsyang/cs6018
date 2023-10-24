@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -52,13 +53,6 @@ class BoardViewModel : ViewModel()  {
 
     var _boardData = MutableLiveData<Board>()
     val boardData: LiveData<Board> = _boardData
-
-    //for tracking the x and y coordinates: data from sensor
-    var myListx = MutableLiveData<Float>()
-    val _x:LiveData<Float> = myListx
-    var myListy = MutableLiveData<Float>()
-    val _y:LiveData<Float> = myListy
-
 
 
     fun refreshBoardData() {
@@ -130,44 +124,26 @@ class BoardViewModel : ViewModel()  {
     }
 
 
-//    fun sensorDraw(){
-//        val paint = Paint()
-//        paint.color = _boardData.value!!.color;
-//        var xCoordinate:Float = _x.value!!
-//        var yCoordinate:Float = _y.value!!
-//        val ret =onClick(xCoordinate,yCoordinate)
-//        canvas.drawCircle(ret[0], ret[1], boardData.value!!.radius, paint)
-//    }
-//
-//    fun onClick(x: Float,y: Float):List<Float>{
-//        var yCoordinate =y
-//        var xCoordinate =x
-//        if (x>0){
-//            xCoordinate+=20
-//
-//        }
-//        if (x < 0){
-//            xCoordinate-=5
-//        }
-//
-//        if (y>0){
-//            yCoordinate+=20
-//
-//        }
-//        if (y < 0){
-//            yCoordinate-=5
-//        }
-//        if(yCoordinate < 0){
-//            yCoordinate = 0f
-//
-//        }
-//
-//        if(xCoordinate <0){
-//            xCoordinate = 0f
-//
-//        }
-//        return listOf(xCoordinate,yCoordinate)
-//    }
+    fun sensorDraw(x: Float,y: Float){
+       var  xcdnt =x
+        var ycdnt = y
+
+       if(y - canvas.height<2) {
+           ycdnt+=20
+       }
+        if(x - canvas.height<2) {
+            xcdnt+=20
+        }
+
+        val paint = Paint()
+        paint.color = _boardData.value!!.color
+
+        canvas.drawCircle(xcdnt, ycdnt, boardData.value!!.radius, paint)
+        _boardData.trigger()
+
+    }
+
+
 
 
 }

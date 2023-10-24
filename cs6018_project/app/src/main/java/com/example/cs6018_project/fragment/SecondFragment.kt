@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import com.example.cs6018_project.DynamicConfig
 import com.example.cs6018_project.R
@@ -42,13 +43,11 @@ import java.io.IOException
 
 
 class SecondFragment : Fragment() {
-//    lateinit var sensorManager: SensorManager
-//    lateinit var gravity:Sensor
-//    lateinit var gravityFlow : Flow<FloatArray>
-   // lateinit var data:Li
 
 
     lateinit var viewModel : BoardViewModel
+    private var yCoordinate = mutableFloatStateOf(0.0f)
+    private var xCoordinate =mutableFloatStateOf(0.0f)
 
     override fun onCreateView(
 
@@ -58,8 +57,11 @@ class SecondFragment : Fragment() {
 
 
 
+
         // Inflate the layout for this fragment
         val binding = FragmentSecondBinding.inflate(inflater)
+
+
 
         val viewModelFromActivityViewModels : BoardViewModel by activityViewModels()
 
@@ -72,16 +74,6 @@ class SecondFragment : Fragment() {
 
         viewModel.refreshBoardData()
 
-        viewModel.boardData.observe(viewLifecycleOwner) {
-            // on board data change
-            binding.boardView.setBitmap(it.bitmap)
-            Log.wtf("*", "on board data change")
-            Log.wtf("*", it.toString())
-        }
-
-
-
-        binding.boardView.setTouchListener { x, y, t -> viewModel.onTouch(x, y, t) }
 
         binding.seekbarDiscrete.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -97,10 +89,38 @@ class SecondFragment : Fragment() {
             //added this
         binding.buttonSensor.setOnClickListener {
             binding.boardView.initSensor()
+
+
+
             binding.boardView.getGravityData().asLiveData().observe(viewLifecycleOwner){
-                Log.e("DataSensor", it[0].toString()+" " +it[1].toString()+" "+ it[2].toString()+" "+"gravity data in sensor")
-                binding.viewModel?.myListx?.value=(it[0])
-                binding.viewModel?.myListy?.value =(it[1])
+
+
+                if (it[0]>0){
+
+
+                    xCoordinate.value+=10
+
+                }
+                if (it[0] < 0){
+
+                    xCoordinate.value-=5
+                }
+
+                if (it[1]>0){
+
+                    yCoordinate.value+=5
+
+                }
+                if (it[1] < 0){
+                    yCoordinate.value-=10
+                }
+                if(yCoordinate.value < 0)
+                    yCoordinate.value = 0f
+                if(xCoordinate.value <0)
+                    xCoordinate.value = 0f
+
+                binding.viewModel?.sensorDraw(xCoordinate.value,yCoordinate.value)
+
             }
 
             binding.buttonSensor.text = "SensorArt"
@@ -148,8 +168,23 @@ class SecondFragment : Fragment() {
         }
 
 
+
+        viewModel.boardData.observe(viewLifecycleOwner) {
+            // on board data change
+            binding.boardView.setBitmap(it.bitmap)
+            Log.wtf("*", "on board data change")
+            Log.wtf("*", it.toString())
+        }
+
+
+        binding.boardView.setTouchListener { x, y, t -> viewModel.onTouch(x, y, t) }
+
         return binding.root
     }
+
+
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
