@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
+import android.graphics.RectF
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -127,13 +128,25 @@ class BoardViewModel : ViewModel()  {
     fun sensorDraw(x: Float,y: Float){
        var  xcdnt =x
         var ycdnt = y
+        var bound = canvas.clipBounds
+        Log.e("CanvasBounds","Width "+ bound.width().toString()+"Hieght "+bound.height().toString())
 
-       if(y - canvas.height<2) {
-           ycdnt+=20
+       if(y > 2000) {
+           ycdnt=2000f
        }
-        if(x - canvas.height<2) {
-            xcdnt+=20
+        if(x >1000 ) {
+            xcdnt= 1000f
         }
+        if(x <90){
+            xcdnt=90f
+
+        }
+        if(y <300){
+            ycdnt=300f
+
+        }
+        xcdnt+=10
+        ycdnt+=10
 
         val paint = Paint()
         paint.color = _boardData.value!!.color
@@ -142,9 +155,6 @@ class BoardViewModel : ViewModel()  {
         _boardData.trigger()
 
     }
-
-
-
 
 }
 
