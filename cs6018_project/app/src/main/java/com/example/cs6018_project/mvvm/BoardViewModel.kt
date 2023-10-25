@@ -89,4 +89,27 @@ class BoardViewModel : ViewModel()  {
         }
     }
 
+    fun sensorDraw(x: Float, y: Float) {
+        val squarePen: Rect by lazy { Rect(x.toInt(), y.toInt(),
+            (x + boardData.value!!.squareLength).toInt(),
+            (y + boardData.value!!.squareLength).toInt()
+        )}
+
+        val bound = canvas.clipBounds
+        Log.e("CanvasBounds","Width "+ bound.width().toString()+"Hieght "+bound.height().toString())
+        Log.wtf("track","x:  " + x.toString() + "y: "+ y.toString())
+
+        val paint = Paint()
+        paint.color = _boardData.value!!.color
+        when (_boardData.value!!.shapeOfPen) {
+            1 -> { // circle
+                canvas.drawCircle(x, y, boardData.value!!.radius, paint)
+            }
+            2 -> { // square
+                canvas.drawRect(squarePen, paint)
+            }
+        }
+        _boardData.trigger()
+    }
+
 }

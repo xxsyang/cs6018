@@ -12,14 +12,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.OnBackPressedCallback
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.asLiveData
 import com.example.cs6018_project.DynamicConfig
 import com.example.cs6018_project.R
 import com.example.cs6018_project.databinding.FragmentSecondBinding
 import com.example.cs6018_project.mvvm.BoardViewModel
-import kotlinx.coroutines.CoroutineScope
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -29,6 +30,8 @@ import java.io.IOException
 class SecondFragment : Fragment() {
 
     lateinit var viewModel : BoardViewModel
+    private var yCoordinate = mutableFloatStateOf(0.0f)
+    private var xCoordinate =mutableFloatStateOf(0.0f)
 
     override fun onCreateView(
 
@@ -67,6 +70,34 @@ class SecondFragment : Fragment() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) { }
 
         })
+
+        // added this
+        binding.buttonSensor.setOnClickListener {
+            binding.boardView.initSensor()
+            binding.boardView.getGravityData().asLiveData().observe(viewLifecycleOwner) {
+
+                if (it[0] > 0)
+                    xCoordinate.floatValue += 5
+                if (it[0] < 0)
+                    xCoordinate.floatValue -= 5
+                if (it[1] > 0)
+                    yCoordinate.floatValue += 5
+                if (it[1] < 0)
+                    yCoordinate.floatValue -= 5
+
+                if (yCoordinate.floatValue < 0)
+                    yCoordinate.floatValue = 0f
+                if (yCoordinate.floatValue > 2732)
+                    yCoordinate.floatValue = 2732f
+                if (xCoordinate.floatValue < 0)
+                    xCoordinate.floatValue = 0f
+                if (xCoordinate.floatValue > 1434)
+                    xCoordinate.floatValue = 1434f
+
+                binding.viewModel?.sensorDraw(xCoordinate.floatValue,yCoordinate.floatValue)
+            }
+
+        }
 
         fun setColor(color: Int) {
             binding.viewModel?.setColor(color)
