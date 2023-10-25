@@ -31,10 +31,9 @@ class FirstFragment : Fragment() {
             navController.navigate(R.id.action_firstFragment_to_savedBoardFragment)
         }
 
-        if(!DynamicConfig.flagSplashShowed) {
+        if (!DynamicConfig.flagSplashShowed) {
             navController.navigate(R.id.action_firstFragment_to_splashFragment)
         }
-
 
         return binding.root
     }
@@ -48,13 +47,10 @@ class FirstFragment : Fragment() {
                 Log.wtf("*", "override fun handleOnBackPressed()")
                 Log.wtf("*", "Path: " + DynamicConfig.savedBoardDirectory + File.separator + DynamicConfig.currentEditBoard)
 
-
                 activity?.finishAndRemoveTask()
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
-
-
 
 }
