@@ -139,6 +139,14 @@ class SavedBoardFragment : Fragment() {
         // Inflate the layout for this fragment
         return ComposeView(requireContext()).apply{
             setContent {
+                Text(
+                    text = "Welcome, " + "username" + "!", // TODO: username should be passed from login fragment -- Jinyi
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(10.dp))
+                        .padding(10.dp),
+                    fontSize = 16.sp
+                )
                 createView(listOf("New board") + getFileList())
             }
         } //inflater.inflate(R.layout.fragment_saved_board, container, false)

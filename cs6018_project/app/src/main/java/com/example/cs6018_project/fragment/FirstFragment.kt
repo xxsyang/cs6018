@@ -37,10 +37,12 @@ class FirstFragment : Fragment() {
         val binding = FragmentFirstBinding.inflate(inflater, container, false)
         val navController = findNavController()
 
-        binding.bt1.setOnClickListener {
-
-            navController.navigate(R.id.action_firstFragment_to_savedBoardFragment)
-        }
+//        TODO: the following code is commented out since we will only use login button to go to the next fragment -- Jinyi
+//        binding.bt1.setOnClickListener {
+//
+//            navController.navigate(R.id.action_firstFragment_to_savedBoardFragment)
+//        }
+        // TODO: ends here
 
         if (!DynamicConfig.flagSplashShowed) {
             navController.navigate(R.id.action_firstFragment_to_splashFragment)
@@ -49,7 +51,7 @@ class FirstFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // TODO (placeholder)
+            .requestIdToken(getString(R.string.default_web_client_id)) // Note: unresolved reference is fine (will be created when login)
             .requestEmail()
             .build()
 
@@ -89,8 +91,7 @@ class FirstFragment : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             handleResults(task)
         } else {
-            Log.wtf("login", "launcher result NOT ok")
-            Log.wtf("login", "launcher result: " + result.resultCode)
+            Log.wtf("login", "launcher result NOT ok, code: " + result.resultCode)
         }
     }
 
@@ -112,12 +113,16 @@ class FirstFragment : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 Log.wtf("login", "login successful")
-                account.email // csproject524@gmail.com
-                account.displayName // password: Abcde-12345 Name: Test
-                Log.wtf("login", account.email)
-                // TODO: bring the information to save_board_fragment
+                Log.wtf("login", "username: " + account.displayName)
+                Log.wtf("login", "email: " + account.email)
+                Log.wtf("login", "ID: " + account.id)
+                Log.wtf("login", "ID token: " + account.idToken)
+                // TODO: bring the above information to save_board_fragment -- Jinyi
+                val navController = findNavController()
+                navController.navigate(R.id.action_firstFragment_to_savedBoardFragment)
             } else {
                 Toast.makeText(requireContext(), it.exception.toString(), Toast.LENGTH_SHORT).show()
+                Log.wtf("login", "login failed")
             }
         }
     }
