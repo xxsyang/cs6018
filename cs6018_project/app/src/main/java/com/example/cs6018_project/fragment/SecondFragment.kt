@@ -30,8 +30,8 @@ import java.io.IOException
 class SecondFragment : Fragment() {
 
     lateinit var viewModel : BoardViewModel
-    private var yCoordinate = mutableFloatStateOf(0.0f)
-    private var xCoordinate =mutableFloatStateOf(0.0f)
+    private var yCoordinate = mutableFloatStateOf(270f)
+    private var xCoordinate =mutableFloatStateOf(0f)
 
     override fun onCreateView(
 
@@ -77,13 +77,13 @@ class SecondFragment : Fragment() {
             binding.boardView.getGravityData().asLiveData().observe(viewLifecycleOwner) {
 
                 if (it[0] > 0)
-                    xCoordinate.floatValue += 5
+                    xCoordinate.floatValue += 0.5f
                 if (it[0] < 0)
-                    xCoordinate.floatValue -= 5
+                    xCoordinate.floatValue -= 0.5f
                 if (it[1] > 0)
-                    yCoordinate.floatValue += 5
+                    yCoordinate.floatValue += 0.5f
                 if (it[1] < 0)
-                    yCoordinate.floatValue -= 5
+                    yCoordinate.floatValue -= 0.5f
 
                 if (yCoordinate.floatValue < 0)
                     yCoordinate.floatValue = 0f

@@ -6,13 +6,28 @@
     android:layout_gravity="center"
     tools:context=".fragment.FirstFragment">
 
+<!--    <com.google.android.material.textfield.TextInputEditText-->
+<!--        android:id="@+id/emailEt"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Type your e-mail"-->
+<!--        android:layout_gravity="center" >-->
+<!--    </com.google.android.material.textfield.TextInputEditText>-->
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login with Google"
+        android:layout_gravity="center_horizontal|center"
+        />
 
     <Button
         android:id="@+id/bt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View or create boards"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom|center"
         />
 
 </FrameLayout>
