@@ -6,13 +6,20 @@
     android:layout_gravity="center"
     tools:context=".fragment.FirstFragment">
 
-
     <Button
-        android:id="@+id/bt1"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View or create boards"
-        android:layout_gravity="center"
+        android:text="Login with Google"
+        android:layout_gravity="center_horizontal|center"
         />
+
+<!--    <Button-->
+<!--        android:id="@+id/bt1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="View or create boards"-->
+<!--        android:layout_gravity="bottom|center"-->
+<!--        />-->
 
 </FrameLayout>
