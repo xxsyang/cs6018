@@ -71,11 +71,16 @@ class DatabaseOperator {
         val resultSet = statement.executeQuery()
 
         if (!resultSet.isBeforeFirst) {
+
+            statement.close()
+
             return ByteArray(0)
         }
         else {
             resultSet.next()
-            return resultSet.getBytes("data")
+            val result = resultSet.getBytes("data")
+            statement.close()
+            return result
         }
     }
 
