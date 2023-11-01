@@ -1,0 +1,72 @@
+Manifest-Version: 1.0
+Main-Class: com.cs6018_project.server.ApplicationKt
+Class-Path: kotlin-stdlib-jdk7-1.9.10.jar grpc-context-1.55.1.jar gax-ht
+ tpjson-0.114.0.jar ktor-client-core-jvm-2.3.5.jar re2j-1.6.jar ktor-ser
+ ver-host-common-jvm-2.3.5.jar error_prone_annotations-2.18.0.jar gax-2.
+ 29.0.jar hamcrest-core-1.3.jar ktor-server-compression-jvm-2.3.5.jar pr
+ oto-google-cloud-firestore-v1-3.13.0.jar ktor-server-partial-content-jv
+ m-2.3.5.jar ktor-server-default-headers-jvm-2.3.5.jar ktor-utils-jvm-2.
+ 3.5.jar opencensus-contrib-grpc-util-0.31.1.jar netty-transport-4.1.97.
+ Final.jar google-http-client-gson-1.43.1.jar google-cloud-storage-2.22.
+ 4.jar proto-google-cloud-storage-v2-2.22.4-alpha.jar ktor-server-netty-
+ jvm-2.3.5.jar ktor-server-call-logging-jvm-2.3.5.jar kotlin-stdlib-1.9.
+ 10.jar protobuf-java-3.23.2.jar javax.annotation-api-1.3.2.jar ktor-ser
+ ver-data-conversion-jvm-2.3.5.jar grpc-protobuf-1.55.1.jar byte-buddy-a
+ gent-1.10.9.jar google-http-client-apache-v2-1.43.1.jar ktor-server-ses
+ sions-jvm-2.3.5.jar netty-buffer-4.1.97.Final.jar ktor-io-jvm-2.3.5.jar
+  grpc-xds-1.55.1.jar byte-buddy-1.10.9.jar firebase-admin-9.2.0.jar ann
+ otations-23.0.0.jar grpc-alts-1.55.1.jar ktor-client-apache-jvm-2.3.5.j
+ ar grpc-netty-shaded-1.55.1.jar kotlinx-coroutines-core-jvm-1.7.3.jar k
+ tor-http-jvm-2.3.5.jar grpc-protobuf-lite-1.55.1.jar conscrypt-openjdk-
+ uber-2.5.2.jar ktor-serialization-jvm-2.3.5.jar auto-value-annotations-
+ 1.10.1.jar alpn-api-1.1.3.v20160715.jar ktor-server-websockets-jvm-2.3.
+ 5.jar ktor-server-call-id-jvm-2.3.5.jar grpc-services-1.55.1.jar guava-
+ 31.1-jre.jar google-cloud-firestore-3.13.0.jar opencensus-api-0.31.1.ja
+ r gson-2.10.1.jar ktor-network-jvm-2.3.5.jar annotations-4.1.1.4.jar ne
+ tty-resolver-4.1.97.Final.jar grpc-auth-1.55.1.jar netty-codec-http2-4.
+ 1.97.Final.jar ktor-server-rate-limit-jvm-2.3.5.jar config-1.4.2.jar ht
+ tpcore-4.4.16.jar failureaccess-1.0.1.jar slf4j-api-2.0.7.jar ktor-serv
+ er-core-jvm-2.3.5.jar jna-5.9.0.jar google-auth-library-oauth2-http-1.1
+ 7.0.jar ktor-network-tls-jvm-2.3.5.jar gax-grpc-2.29.0.jar grpc-api-1.5
+ 5.1.jar ktor-server-caching-headers-jvm-2.3.5.jar google-cloud-core-grp
+ c-2.19.0.jar kotlin-test-1.9.10.jar grpc-rls-1.55.1.jar kotlin-reflect-
+ 1.8.22.jar listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.j
+ ar netty-transport-native-epoll-4.1.97.Final.jar proto-google-common-pr
+ otos-2.20.0.jar api-common-2.12.0.jar protobuf-java-util-3.23.2.jar grp
+ c-grpclb-1.55.1.jar gapic-google-cloud-storage-v2-2.22.4-alpha.jar prot
+ o-google-cloud-firestore-bundle-v1-3.13.0.jar kotlinx-coroutines-slf4j-
+ 1.7.3.jar ktor-server-jvm-2.3.5.jar ktor-test-dispatcher-jvm-2.3.5.jar 
+ ktor-server-test-host-jvm-2.3.5.jar jackson-core-2.14.2.jar jna-platfor
+ m-5.9.0.jar ktor-server-auto-head-response-jvm-2.3.5.jar ktor-server-hs
+ ts-jvm-2.3.5.jar kotlinx-coroutines-debug-1.7.3.jar junit-4.13.2.jar gr
+ pc-core-1.55.1.jar kotlin-test-junit-1.9.10.jar netty-transport-native-
+ unix-common-4.1.97.Final.jar ktor-websocket-serialization-jvm-2.3.5.jar
+  kotlin-stdlib-jdk8-1.9.10.jar netty-codec-http-4.1.97.Final.jar httpas
+ yncclient-4.1.5.jar commons-logging-1.2.jar ktor-server-status-pages-jv
+ m-2.3.5.jar google-http-client-jackson2-1.43.1.jar ktorm-core-3.6.0.jar
+  google-api-client-gson-2.2.0.jar grpc-googleapis-1.55.1.jar ktor-event
+ s-jvm-2.3.5.jar kotlinx-serialization-json-jvm-1.5.1.jar netty-transpor
+ t-native-kqueue-4.1.97.Final.jar google-api-services-storage-v1-rev2023
+ 0301-2.0.0.jar threetenbp-1.6.8.jar netty-transport-classes-epoll-4.1.9
+ 7.Final.jar opencensus-contrib-http-util-0.31.1.jar j2objc-annotations-
+ 1.3.jar netty-codec-4.1.97.Final.jar ktor-server-tests-jvm-2.3.5.jar go
+ ogle-http-client-1.43.1.jar proto-google-iam-v1-1.15.0.jar ktor-server-
+ http-redirect-jvm-2.3.5.jar netty-common-4.1.97.Final.jar ktor-server-m
+ ethod-override-jvm-2.3.5.jar netty-handler-4.1.97.Final.jar ktor-http-c
+ io-jvm-2.3.5.jar kotlin-stdlib-common-1.9.10.jar httpcore-nio-4.4.15.ja
+ r google-auth-library-credentials-1.17.0.jar grpc-stub-1.55.1.jar kotli
+ nx-serialization-core-jvm-1.5.1.jar atomicfu-jvm-0.22.0.jar ktor-networ
+ k-tls-certificates-jvm-2.3.5.jar netty-transport-classes-kqueue-4.1.97.
+ Final.jar animal-sniffer-annotations-1.23.jar kotlinx-coroutines-jdk8-1
+ .7.3.jar ktor-server-content-negotiation-jvm-2.3.5.jar ktor-server-cors
+ -jvm-2.3.5.jar google-api-client-2.2.0.jar perfmark-api-0.26.0.jar ktor
+ -server-forwarded-header-jvm-2.3.5.jar google-oauth-client-1.34.1.jar k
+ tor-websockets-jvm-2.3.5.jar grpc-google-cloud-storage-v2-2.22.4-alpha.
+ jar logback-classic-1.4.11.jar httpclient-4.5.14.jar ktor-client-cio-jv
+ m-2.3.5.jar ktor-server-conditional-headers-jvm-2.3.5.jar ktor-server-d
+ ouble-receive-jvm-2.3.5.jar commons-codec-1.15.jar google-cloud-core-2.
+ 19.0.jar ktorm-support-sqlite-3.6.0.jar jsr305-3.0.2.jar google-http-cl
+ ient-appengine-1.43.1.jar sqlite-jdbc-3.43.2.1.jar opencensus-proto-0.2
+ .0.jar jansi-2.4.0.jar google-cloud-core-http-2.19.0.jar logback-core-1
+ .4.11.jar checker-qual-3.32.0.jar
+
