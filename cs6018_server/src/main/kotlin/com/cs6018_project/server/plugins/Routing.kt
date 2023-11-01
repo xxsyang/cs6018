@@ -58,5 +58,15 @@ fun Application.configureRouting() {
             }
         }
 
+        delete("/remove_image/{image_name}") {
+            val imageName = call.parameters["image_name"].orEmpty()
+            val email = call.parameters["email"].orEmpty()
+
+            if(imageName.isEmpty()) { }
+            else { DatabaseOperator.getInstance().removePaintingByName(imageName, email) }
+
+            call.respondText("OK")
+        }
+
     }
 }
