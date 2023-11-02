@@ -52,6 +52,17 @@ android {
 
 
 dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    runtimeOnly("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("io.ktor:ktor-client-core:2.3.5")
+    implementation("com.google.code.gson:gson:2.10.1")
+// https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+// https://mvnrepository.com/artifact/io.ktor/ktor-client-okhttp
+    implementation("io.ktor:ktor-client-okhttp:2.3.5")
+// https://mvnrepository.com/artifact/io.ktor/ktor-client-cio-jvm
+    implementation("io.ktor:ktor-client-cio-jvm:2.3.5")
+
 
     implementation("com.google.android.gms:play-services-auth:20.7.0")
     implementation("com.google.firebase:firebase-auth:22.2.0")

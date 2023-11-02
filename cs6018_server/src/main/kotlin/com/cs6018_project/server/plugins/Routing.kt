@@ -8,6 +8,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
+
 fun Application.configureRouting() {
     routing {
         get("/") {
@@ -52,8 +53,8 @@ fun Application.configureRouting() {
                     call.respond(HttpStatusCode.NotFound, "Not found")
                 }
                 call.respondBytes(
-                    savedPainting,
-                    ContentType.Image.JPEG
+                        savedPainting,
+                        ContentType.Image.JPEG
                 )
             }
         }

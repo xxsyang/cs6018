@@ -1,5 +1,6 @@
 package com.example.cs6018_project.fragment
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -11,16 +12,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import com.example.cs6018_project.DynamicConfig
 import com.example.cs6018_project.R
 import com.example.cs6018_project.databinding.FragmentSecondBinding
 import com.example.cs6018_project.mvvm.BoardViewModel
+import com.example.cs6018_project.room.Item
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.request.put
+import io.ktor.client.request.setBody
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -32,6 +42,11 @@ class SecondFragment : Fragment() {
     lateinit var viewModel : BoardViewModel
     private var yCoordinate = mutableFloatStateOf(270f)
     private var xCoordinate =mutableFloatStateOf(0f)
+
+    var mainScope = MainScope()
+    var client = HttpClient(CIO)
+
+    lateinit var self: Context
 
     override fun onCreateView(
 
@@ -124,6 +139,8 @@ class SecondFragment : Fragment() {
         }
 
         binding.buttonShare.setOnClickListener {
+            shareCurrentBoard()
+            /*
             val file = File(requireContext().cacheDir, "test" + ".png")
             val fOut = FileOutputStream(file)
             val bitmap = viewModel.getCurrentBitmap()
@@ -137,15 +154,49 @@ class SecondFragment : Fragment() {
 
             intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(requireContext(),
                 (context?.packageName?: "") + ".provider", file))
-            intent.type = "image/*"
+            intent.type = "image # *"
             startActivity(intent)
+
+            */
         }
 
         return binding.root
     }
 
+    fun shareCurrentBoard() {
+        val item = saveImageAndReturnItem()
+
+        mainScope.launch {
+            client.put("http://10.0.2.2:8080/upload_image/" + item.name) {
+                headers.append("email", DynamicConfig.userEmail.orEmpty())
+                headers.append("uid", DynamicConfig.userId.orEmpty())
+                setBody(item.image)
+            }
+
+            (self as Activity).runOnUiThread {
+                Toast.makeText(self, "Image has been shared", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    fun saveImageAndReturnItem(): Item {
+        var item: Item
+        ByteArrayOutputStream().use {
+            viewModel.getCurrentBitmap().compress(Bitmap.CompressFormat.PNG, 95, it)
+            var dao = DynamicConfig.database.itemDao()
+            item = dao.findByName(DynamicConfig.currentEditBoard)
+            item.image = it.toByteArray()
+            dao.updateImage(item)
+        }
+
+        return item
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        self = context
+
         val callback: OnBackPressedCallback = object :
             OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -165,8 +216,11 @@ class SecondFragment : Fragment() {
                     e.printStackTrace()
                 }
 
+                val navController = findNavController()
+                navController.navigate(R.id.action_secondFragment_to_savedBoardFragment)
+
                 remove()
-                activity?.onBackPressed()
+
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)

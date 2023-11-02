@@ -6,13 +6,45 @@
     android:layout_gravity="center"
     tools:context=".fragment.FirstFragment">
 
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center">
+        <Button
+                android:id="@+id/button_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login with Google"/>
+        <TextView
+                android:id="@+id/u_welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        <Button
+                android:id="@+id/u_view_others_boards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="View Others Boards" />
+
+        <Button
+                android:id="@+id/u_view_my_boards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="View My Boards" />
+
+    </LinearLayout>
+
+
     <Button
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login with Google"
-        android:layout_gravity="center_horizontal|center"
-        />
+            android:id="@+id/button_view_boards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View or create boards"
+            android:layout_gravity="bottom|center"
+            />
 
 <!--    <Button-->
 <!--        android:id="@+id/bt1"-->
