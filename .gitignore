@@ -34,4 +34,5 @@ google-services.json
 
 # Git
 *.DS_Store
+**/.DS_Store
 
