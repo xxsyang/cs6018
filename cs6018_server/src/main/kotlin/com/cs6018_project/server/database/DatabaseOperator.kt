@@ -85,8 +85,8 @@ class DatabaseOperator {
     }
 
     fun removePaintingByName(fileName: String, email: String) {
-        val statement = DatabaseRepository.connection
-                .prepareStatement("DELETE FROM t_painting WHERE file_name = ? AND email = ?;")
+        val statement = DatabaseRepository.connection.prepareStatement("DELETE FROM t_painting WHERE file_name = ? AND email = ?;")
+
 
         statement.setString(1, fileName)
 
@@ -98,6 +98,5 @@ class DatabaseOperator {
 
         statement.close()
     }
-
 
 }
