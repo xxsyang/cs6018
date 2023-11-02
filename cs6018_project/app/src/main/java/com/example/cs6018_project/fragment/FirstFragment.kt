@@ -85,8 +85,8 @@ class FirstFragment : Fragment(), FirebaseAuth.AuthStateListener {
     }
 
     override fun onAuthStateChanged(p0: FirebaseAuth) {
-        Log.wtf("&&&", "onAuthStateChanged :: " + p0.toString())
-        Log.wtf("&&&", "onAuthStateChanged :: user :: " + p0.currentUser!!.uid)
+//        Log.wtf("&&&", "onAuthStateChanged :: " + p0.toString())
+//        Log.wtf("&&&", "onAuthStateChanged :: user :: " + p0.currentUser!!.uid)
 
         var user = p0.currentUser
 
