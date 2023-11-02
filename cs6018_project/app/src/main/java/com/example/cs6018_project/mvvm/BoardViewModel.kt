@@ -96,7 +96,7 @@ class BoardViewModel : ViewModel()  {
         )}
 
         val bound = canvas.clipBounds
-        Log.e("CanvasBounds","Width "+ bound.width().toString()+"Hieght "+bound.height().toString())
+        Log.e("CanvasBounds","Width "+ bound.width().toString()+"Height "+bound.height().toString())
         Log.wtf("track","x:  " + x.toString() + "y: "+ y.toString())
 
         val paint = Paint()

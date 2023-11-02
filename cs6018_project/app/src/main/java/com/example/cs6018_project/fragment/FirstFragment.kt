@@ -26,23 +26,27 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
-class FirstFragment : Fragment(), FirebaseAuth.AuthStateListener  {
+class FirstFragment : Fragment(), FirebaseAuth.AuthStateListener {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         val callback: OnBackPressedCallback = object :
             OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 Log.wtf("*", "override fun handleOnBackPressed()")
-//                Log.wtf("*", "Path: " + DynamicConfig.savedBoardDirectory + File.separator + DynamicConfig.currentEditBoard)
-//                Log.wtf("*", "override fun handleOnBackPressed()")
+                // Log.wtf("*", "Path: " + DynamicConfig.savedBoardDirectory + File.separator + DynamicConfig.currentEditBoard)
+
                 activity?.finishAndRemoveTask()
             }
         }
+
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,8 +85,8 @@ class FirstFragment : Fragment(), FirebaseAuth.AuthStateListener  {
     }
 
     override fun onAuthStateChanged(p0: FirebaseAuth) {
-//        Log.wtf("&&&", "onAuthStateChanged :: " + p0.toString())
-//        Log.wtf("&&&", "onAuthStateChanged :: user :: " + p0.currentUser!!.uid)
+        Log.wtf("&&&", "onAuthStateChanged :: " + p0.toString())
+        Log.wtf("&&&", "onAuthStateChanged :: user :: " + p0.currentUser!!.uid)
 
         var user = p0.currentUser
 
@@ -101,7 +105,6 @@ class FirstFragment : Fragment(), FirebaseAuth.AuthStateListener  {
         view?.findViewById<Button>(R.id.button_login)?.visibility = View.GONE
 
     }
-
 
     fun setupGoogleSignInClient() {
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -151,9 +154,9 @@ class FirstFragment : Fragment(), FirebaseAuth.AuthStateListener  {
 
                 account.email // csproject524@gmail.com
                 account.displayName // password: Abcde-12345 Name: Test
+                // TODO: bring the information to save_board_fragment
             } else {
                 Toast.makeText(requireContext(), it.exception.toString(), Toast.LENGTH_SHORT).show()
-                Log.wtf("login", "login failed")
             }
         }
     }

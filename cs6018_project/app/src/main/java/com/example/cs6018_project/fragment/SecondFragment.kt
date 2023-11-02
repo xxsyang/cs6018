@@ -47,6 +47,7 @@ class SecondFragment : Fragment() {
     var client = HttpClient(CIO)
 
     lateinit var self: Context
+
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -138,27 +139,31 @@ class SecondFragment : Fragment() {
         }
 
         binding.buttonShare.setOnClickListener {
-            shareCurrentBoard();
-//            val file = File(requireContext().cacheDir, "test" + ".png")
-//            val fOut = FileOutputStream(file)
-//            val bitmap = viewModel.getCurrentBitmap()
-//            Log.wtf("*", bitmap.toString())
-//            bitmap.compress(CompressFormat.PNG, 95, fOut)
-//            fOut.flush()
-//            fOut.close()
-//
-//            val intent = Intent(Intent.ACTION_SEND)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//
-//            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(requireContext(),
-//                (context?.packageName?: "") + ".provider", file))
-//            intent.type = "image/*"
-//            startActivity(intent)
+            shareCurrentBoard()
+            /*
+            val file = File(requireContext().cacheDir, "test" + ".png")
+            val fOut = FileOutputStream(file)
+            val bitmap = viewModel.getCurrentBitmap()
+            Log.wtf("*", bitmap.toString())
+            bitmap.compress(CompressFormat.PNG, 95, fOut)
+            fOut.flush()
+            fOut.close()
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(requireContext(),
+                (context?.packageName?: "") + ".provider", file))
+            intent.type = "image # *"
+            startActivity(intent)
+
+            */
         }
+
         return binding.root
     }
 
-    fun shareCurrentBoard(){
+    fun shareCurrentBoard() {
         val item = saveImageAndReturnItem()
 
         mainScope.launch {
@@ -187,10 +192,11 @@ class SecondFragment : Fragment() {
         return item
     }
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
         self = context
+
         val callback: OnBackPressedCallback = object :
             OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -214,7 +220,7 @@ class SecondFragment : Fragment() {
                 navController.navigate(R.id.action_secondFragment_to_savedBoardFragment)
 
                 remove()
-//                activity?.onBackPressed()
+
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)

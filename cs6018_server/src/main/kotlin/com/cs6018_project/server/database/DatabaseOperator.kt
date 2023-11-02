@@ -9,14 +9,14 @@ class DatabaseOperator {
         private var instance: DatabaseOperator? = null
 
         fun getInstance() =
-            instance ?: synchronized(this) {
-                instance ?: DatabaseOperator().also { instance = it }
-            }
+                instance ?: synchronized(this) {
+                    instance ?: DatabaseOperator().also { instance = it }
+                }
     }
 
     fun addPainting(userId: String, email: String, fileName: String, painting: ByteArray) {
         val statement = DatabaseRepository.connection
-            .prepareStatement("INSERT INTO t_painting(owner_id, email, file_name, data) VALUES(?, ?, ?, ?);")
+                .prepareStatement("INSERT INTO t_painting(owner_id, email, file_name, data) VALUES(?, ?, ?, ?);")
 
         statement.setString(1, userId)
         statement.setString(2, email)
@@ -30,7 +30,7 @@ class DatabaseOperator {
 
     fun listUsers(): ArrayList<String> {
         val statement = DatabaseRepository.connection
-            .prepareStatement("SELECT email from t_painting GROUP BY email;")
+                .prepareStatement("SELECT email from t_painting GROUP BY email;")
 
         val resultSet = statement.executeQuery()
         val result = ArrayList<String>()
@@ -46,7 +46,7 @@ class DatabaseOperator {
 
     fun listUserPaintings(email: String): ArrayList<String> {
         val statement = DatabaseRepository.connection
-            .prepareStatement("SELECT * from t_painting WHERE email = ?;")
+                .prepareStatement("SELECT * from t_painting WHERE email = ?;")
 
         statement.setString(1, email)
 
@@ -64,19 +64,40 @@ class DatabaseOperator {
 
     fun getPaintingByName(fileName: String): ByteArray {
         val statement = DatabaseRepository.connection
-            .prepareStatement("SELECT * from t_painting WHERE file_name = ? LIMIT 1;")
+                .prepareStatement("SELECT * from t_painting WHERE file_name = ? LIMIT 1;")
 
         statement.setString(1, fileName)
 
         val resultSet = statement.executeQuery()
 
         if (!resultSet.isBeforeFirst) {
+
+            statement.close()
+
             return ByteArray(0)
         }
         else {
             resultSet.next()
-            return resultSet.getBytes("data")
+            val result = resultSet.getBytes("data")
+            statement.close()
+            return result
         }
     }
+
+    fun removePaintingByName(fileName: String, email: String) {
+        val statement = DatabaseRepository.connection
+                .prepareStatement("DELETE FROM t_painting WHERE file_name = ? AND email = ?;")
+
+        statement.setString(1, fileName)
+
+        statement.setString(2, email)
+
+        println("Query: $statement")
+
+        statement.execute()
+
+        statement.close()
+    }
+
 
 }

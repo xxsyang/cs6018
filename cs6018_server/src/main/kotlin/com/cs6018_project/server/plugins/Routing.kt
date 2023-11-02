@@ -8,6 +8,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
+
 fun Application.configureRouting() {
     routing {
         get("/") {
@@ -52,10 +53,20 @@ fun Application.configureRouting() {
                     call.respond(HttpStatusCode.NotFound, "Not found")
                 }
                 call.respondBytes(
-                    savedPainting,
-                    ContentType.Image.JPEG
+                        savedPainting,
+                        ContentType.Image.JPEG
                 )
             }
+        }
+
+        delete("/remove_image/{image_name}") {
+            val imageName = call.parameters["image_name"].orEmpty()
+            val email = call.parameters["email"].orEmpty()
+
+            if(imageName.isEmpty()) { }
+            else { DatabaseOperator.getInstance().removePaintingByName(imageName, email) }
+
+            call.respondText("OK")
         }
 
     }

@@ -63,6 +63,16 @@ class SavedBoardFragment : Fragment() {
         }
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        return ComposeView(requireContext()).apply{
+            setContent {
+                createView(listOf("New board") + getFileList())
+            }
+        } //inflater.inflate(R.layout.fragment_saved_board, container, false)
+    }
+
     private fun jumpToBoard(fileName: String) {
         Log.wtf("*", "Text clicked: $fileName")
 
@@ -133,29 +143,6 @@ class SavedBoardFragment : Fragment() {
         }
         return dir.list().asList()
     }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return ComposeView(requireContext()).apply{
-            setContent {
-                createView(listOf("New board") + getFileList())
-            }
-        } //inflater.inflate(R.layout.fragment_saved_board, container, false)
-    }
-//            setContent {
-//                Text(
-//                    text = "Welcome, " + "username" + "!", // TODO: username should be passed from login fragment -- Jinyi
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .clip(RoundedCornerShape(10.dp))
-//                        .padding(10.dp),
-//                    fontSize = 16.sp
-//                )
-//                createView(listOf("New board") + getFileList())
-//            }
-//        } //inflater.inflate(R.layout.fragment_saved_board, container, false)
-//    }
 
     companion object {
         /**

@@ -10,5 +10,6 @@ data class Item (
 
     var name: String?,
 
+
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var image: ByteArray
 )
